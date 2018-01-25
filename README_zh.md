@@ -25,8 +25,18 @@ Dubbo Spring Boot Starter。
 
 ```properties
 spring.dubbo.appname=dubbo-spring-boot-starter-provider-test
-spring.dubbo.registry=multicast://224.0.0.0:1111
+
+#这里multicast可以是 zookeeper 或 redis
+#spring.dubbo.registry=multicast://224.0.0.0:1111
+spring.dubbo.registry=redis://${spring.redis.host}:${spring.redis.port}
+# redis账户
+spring.dubbo.username=root
+# redis密码
+spring.dubbo.password=
+
 spring.dubbo.protocol=dubbo
+#指定主机ip
+spring.dubbo.host=127.0.0.1
 ```
 
 * 接下来在Spring Boot Application的上添加`@EnableDubboConfiguration`, 表示要开启dubbo功能. (dubbo provider服务可以使用或者不使用web容器)
@@ -67,7 +77,14 @@ public class HelloServiceImpl implements IHelloService {
 
 ```properties
 spring.dubbo.appname=dubbo-spring-boot-starter-consumer-test
-spring.dubbo.registry=multicast://224.0.0.0:1111
+
+#spring.dubbo.registry=multicast://224.0.0.0:1111
+spring.dubbo.registry=redis://${spring.redis.host}:${spring.redis.port}
+# redis账户
+spring.dubbo.username=root
+# redis密码
+spring.dubbo.password=
+
 spring.dubbo.protocol=dubbo
 ```
 

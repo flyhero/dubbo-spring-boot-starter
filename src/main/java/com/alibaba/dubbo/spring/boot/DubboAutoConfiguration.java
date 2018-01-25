@@ -39,6 +39,7 @@ public class DubboAutoConfiguration {
   public ProtocolConfig dubboProtocolConfig() {
     ProtocolConfig protocolConfig = new ProtocolConfig();
     protocolConfig.setName(this.properties.getProtocol());
+    protocolConfig.setHost(this.properties.getHost());
     protocolConfig.setPort(this.properties.getPort());
     protocolConfig.setThreads(this.properties.getThreads());
     return protocolConfig;
@@ -49,6 +50,8 @@ public class DubboAutoConfiguration {
   public RegistryConfig dubboRegistryConfig() {
     RegistryConfig registryConfig = new RegistryConfig();
     registryConfig.setAddress(this.properties.getRegistry());
+    registryConfig.setUsername(this.properties.getUsername());
+    registryConfig.setPassword(this.properties.getPassword());
     return registryConfig;
   }
 

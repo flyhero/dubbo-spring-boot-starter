@@ -23,9 +23,18 @@ Support jdk version 1.6 or 1.6+
 * add dubbo configuration in application.properties, demo:
 
 ```properties
-spring.dubbo.appname=dubbo-spring-boot-starter-provider-test
-spring.dubbo.registry=multicast://224.0.0.0:1111
+
+#这里multicast可以是 zookeeper 或 redis
+#spring.dubbo.registry=multicast://224.0.0.0:1111
+spring.dubbo.registry=redis://${spring.redis.host}:${spring.redis.port}
+# redis username
+spring.dubbo.username=root
+# redis password
+spring.dubbo.password=
+
 spring.dubbo.protocol=dubbo
+# bind ip
+spring.dubbo.host=127.0.0.1
 ```
 
 * then add `@EnableDubboConfiguration` on Spring Boot Application, indicates that dubbo is enabled.(web or non-web application can use dubbo provider)
@@ -66,7 +75,14 @@ public class HelloServiceImpl implements IHelloService {
 
 ```properties
 spring.dubbo.appname=dubbo-spring-boot-starter-consumer-test
-spring.dubbo.registry=multicast://224.0.0.0:1111
+
+#spring.dubbo.registry=multicast://224.0.0.0:1111
+spring.dubbo.registry=redis://${spring.redis.host}:${spring.redis.port}
+# redis username
+spring.dubbo.username=root
+# redis password
+spring.dubbo.password=
+
 spring.dubbo.protocol=dubbo
 ```
 

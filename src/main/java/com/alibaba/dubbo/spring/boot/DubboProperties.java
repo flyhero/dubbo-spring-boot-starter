@@ -23,9 +23,24 @@ public class DubboProperties {
   private String registry;
 
   /**
+   * redis username
+   */
+  private String username;
+
+  /**
+   * redis password
+   */
+  private String password;
+
+  /**
    * communication protocol, default is dubbo
    */
   private String protocol = "dubbo";
+
+  /**
+   * bind ip
+   */
+  private String host = "";
 
   /**
    * dubbo listen port, default 20800
@@ -66,12 +81,36 @@ public class DubboProperties {
     this.registry = registry;
   }
 
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
   public String getProtocol() {
     return this.protocol;
   }
 
   public void setProtocol(String protocol) {
     this.protocol = protocol;
+  }
+
+  public String getHost() {
+    return host;
+  }
+
+  public void setHost(String host) {
+    this.host = host;
   }
 
   public int getPort() {
